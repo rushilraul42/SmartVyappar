@@ -1,0 +1,40 @@
+/* src/styles/BuyPage.css */
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  .product-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 200px;
+    text-align: center;
+  }
+  
+  .product-card h3 {
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .product-card p {
+    color: #666;
+    margin: 0.5rem 0;
+  }
+  
+  .product-card button {
+    padding: 0.5rem 1rem;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .product-card button:hover {
+    background-color: #218838;
+  }
+  

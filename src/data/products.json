@@ -1,0 +1,16 @@
+
+[
+    {
+      "id": 1,
+      "title": "Bicycle for Sale",
+      "description": "A well-maintained mountain bike available for purchase.",
+      "category": "buy"
+    },
+    {
+      "id": 2,
+      "title": "Laptop for Rent",
+      "description": "High-performance laptop available for short-term rental.",
+      "category": "rent"
+    }
+  ]
+  

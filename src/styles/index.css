@@ -1,0 +1,75 @@
+/* src/styles/index.css */
+
+/* Tailwind CSS base styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Your custom styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7fafc; /* Light gray background */
+}
+
+.item-card {
+    transition: transform 0.3s ease;
+}
+
+.item-card:hover {
+    transform: scale(1.05); /* Scale up on hover */
+}
+
+.btn {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #4a90e2; /* Light blue on hover */
+}
+
+/* Custom form styling */
+form {
+    background-color: #ffffff; /* White background */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    width: 300px; /* Fixed width */
+    margin-top: 20px; /* Spacing from other elements */
+}
+
+input {
+    border: 1px solid #d1d5db; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+    padding: 10px;
+    width: 100%; /* Full width */
+    margin-bottom: 15px; /* Space between inputs */
+}
+
+input:focus {
+    outline: none; /* Remove default outline */
+    border-color: #4a90e2; /* Border color on focus */
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.5); /* Shadow on focus */
+}
+
+button {
+    background-color: #4a90e2; /* Blue background */
+    color: white; /* White text */
+    padding: 10px;
+    border: none; /* Remove border */
+    border-radius: 4px;
+    cursor: pointer; /* Pointer cursor */
+}
+
+button:hover {
+    background-color: #357abf; /* Darker blue on hover */
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 640px) {
+    form {
+        width: 90%; /* Full width for mobile */
+    }
+}

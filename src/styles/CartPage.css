@@ -1,0 +1,93 @@
+/* src/styles/CartPage.css */
+
+.cart-container {
+    max-width: 600px; /* Limit the width of the cart */
+    margin: 20px auto; /* Center the cart on the page */
+    padding: 20px; /* Add some padding */
+    background-color: #ffffff; /* White background for a cleaner look */
+    border-radius: 12px; /* More pronounced rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Slightly more pronounced shadow */
+}
+
+.cart-header {
+    font-size: 28px; /* Larger font size for the header */
+    margin-bottom: 20px; /* Space below the header */
+    text-align: center; /* Center the text */
+    color: #333; /* Darker text color */
+    font-weight: bold; /* Bold header */
+}
+
+.cart-items-list {
+    list-style-type: none; /* Remove default list style */
+    padding: 0; /* Remove default padding */
+}
+
+.cart-item {
+    display: flex; /* Use flexbox for item layout */
+    justify-content: space-between; /* Space items evenly */
+    padding: 15px; /* Padding for each item */
+    border-bottom: 1px solid #eee; /* Light border for separation */
+    transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.cart-item:hover {
+    background-color: #f1f1f1; /* Light grey background on hover */
+}
+
+.cart-item:last-child {
+    border-bottom: none; /* Remove border for last item */
+}
+
+.cart-item-title {
+    font-weight: bold; /* Bold title */
+    font-size: 16px; /* Slightly larger font size */
+}
+
+.cart-item-category {
+    color: #777; /* Lighter color for category */
+    font-size: 14px; /* Smaller font size for category */
+}
+
+.cart-item-price {
+    color: #007bff; /* Bootstrap primary color for price */
+    font-size: 16px; /* Slightly larger font size */
+}
+
+.empty-cart-message {
+    text-align: center; /* Center the empty message */
+    color: #999; /* Gray color for empty message */
+    font-style: italic; /* Italic style */
+    margin-top: 20px; /* Space above the message */
+}
+
+.purchase-button {
+    display: block; /* Block level for full width */
+    width: 100%; /* Full width button */
+    padding: 15px; /* Padding for the button */
+    margin-top: 20px; /* Space above the button */
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white; /* White text color */
+    border: none; /* Remove default border */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 18px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth background color transition */
+}
+
+.purchase-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.delete-button {
+    margin-left: 10px; /* Space between title and button */
+    background-color: #dc3545; /* Bootstrap danger color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    padding: 5px 10px; /* Padding */
+    cursor: pointer; /* Pointer cursor on hover */
+  }
+  
+  .delete-button:hover {
+    background-color: #c82333; /* Darker red on hover */
+  }
