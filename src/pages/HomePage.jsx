@@ -17,33 +17,35 @@ function HomePage() {
 
   return (
     <div className="home-container">
-      <h1>Welcome to Smart Vyapaar</h1>
-      <p>Choose an option to proceed:</p>
-      <div className="home-buttons">
-        <button onClick={() => navigate("/buy")}>Buy Products</button>
-        <button onClick={() => navigate("/rent")}>Rent Products</button>
-        <button onClick={() => navigate("/sell")}>Sell Products</button>
-      </div>
+      <nav className="navbar">
+        <h2 className="navbar-brand">Smart Vyapaar</h2>
+        <div className="navbar-links">
+          <button onClick={() => navigate("/buy")}>Buy</button>
+          <button onClick={() => navigate("/rent")}>Rent</button>
+          <button onClick={() => navigate("/sell")}>Sell</button>
+          <button onClick={toggleAccountMenu} className="account-nav-button">Account</button>
+        </div>
+      </nav>
+      
+      {showAccountMenu && (
+        <div className="account-dropdown">
+          <h3>Manage Account</h3>
+          <p>Email: {auth.currentUser.email}</p>
+          <button onClick={handleLogout} className="logout-button">
+            Logout
+          </button>
+          <button onClick={() => navigate("/my-listings")}>
+            My Listings
+          </button>
+          <button onClick={() => navigate("/cart")}>
+            View Cart
+          </button>
+        </div>
+      )}
 
-      <div className="account-section">
-        <button onClick={toggleAccountMenu} className="account-button">
-          Account
-        </button>
-        {showAccountMenu && (
-          <div className="account-dropdown">
-            <h3>Manage Account</h3>
-            <p>Email: {auth.currentUser.email}</p>
-            <button onClick={handleLogout} className="logout-button">
-              Logout
-            </button>
-            <button onClick={() => navigate("/my-listings")} className="my-listings-button">
-              My Listings
-            </button>
-            <button onClick={() => navigate("/cart")} className="cart-button">
-              View Cart
-            </button>
-          </div>
-        )}
+      <div className="content">
+        <h1>Welcome to Smart Vyapaar</h1>
+        <p>Choose an option to proceed:</p>
       </div>
     </div>
   );

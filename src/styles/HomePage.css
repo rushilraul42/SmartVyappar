@@ -1,82 +1,70 @@
 /* src/styles/HomePage.css */
 
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #333; /* Dark background */
+}
+
 .home-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f0f4f8, #d9e3f0);
-  padding: 2rem;
-  font-family: 'Arial', sans-serif;
+  background: #333;
+  color: #f0f4f8;
+  padding-top: 4rem; /* Navbar space */
 }
 
-.home-container h1 {
-  color: #333;
-  font-size: 3rem;
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  color: #f0f4f8;
   font-weight: bold;
-  margin-bottom: 1rem;
-  text-align: center;
 }
 
-.home-container p {
-  color: #555;
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-.home-buttons {
+.navbar-links {
   display: flex;
   gap: 1.5rem;
-  margin-bottom: 2rem;
 }
 
-.home-buttons button {
-  padding: 0.75rem 2rem;
+.navbar-links button {
   font-size: 1rem;
-  font-weight: bold;
-  color: #fff;
-  background-color: #007bff;
+  color: #f0f4f8;
+  background-color: transparent;
   border: none;
-  border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-.home-buttons button:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
-}
-
-.account-section {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-}
-
-.account-button {
   padding: 0.5rem 1rem;
-  font-size: 1rem;
-  color: #007bff;
-  background-color: #fff;
-  border: 1px solid #007bff;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+  transition: color 0.3s, border-bottom 0.3s;
+  border-bottom: 2px solid transparent;
 }
 
-.account-button:hover {
-  background-color: #007bff;
-  color: #fff;
+.navbar-links button:hover {
+  color: #00aaff;
+  border-bottom: 2px solid #00aaff;
+}
+
+.account-nav-button {
+  color: #ff5722;
 }
 
 .account-dropdown {
   position: absolute;
-  top: 2.5rem;
-  right: 0;
-  background-color: #fff;
+  top: 60px;
+  right: 2rem;
+  background-color: #444;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -86,73 +74,63 @@
 }
 
 .account-dropdown h3 {
-  margin: 0 0 1rem 0;
-  color: #333;
+  color: #f0f4f8;
   font-size: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .account-dropdown p {
-  margin: 0 0 1rem 0;
-  color: #555;
+  color: #ccc;
   font-size: 0.9rem;
 }
 
 .account-dropdown button {
   width: 100%;
-  padding: 0.5rem 0;
+  padding: 0.5rem;
   margin-top: 1rem;
   font-size: 1rem;
-  color: #007bff;
-  background-color: #f8f9fa;
-  border: 1px solid #ddd;
-  border-radius: 50px;
+  color: #f0f4f8;
+  background-color: #666;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .account-dropdown button:hover {
-  background-color: #e2e6ea;
+  background-color: #555;
 }
 
 .logout-button {
-  padding: 0.5rem 0;
   width: 100%;
+  padding: 0.5rem;
+  margin-top: 1rem;
   font-size: 1rem;
   color: #fff;
   background-color: #dc3545;
   border: none;
-  border-radius: 50px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
-  margin-top: 1rem;
+  transition: background-color 0.3s;
 }
 
 .logout-button:hover {
   background-color: #c82333;
-  transform: translateY(-2px);
 }
 
-.purchase-history {
-  margin-top: 1rem;
+.content {
+  margin-top: 2rem;
+  text-align: center;
 }
 
-.purchase-history h4 {
-  color: #333;
-  margin-bottom: 0.5rem;
+.content h1 {
+  color: #f0f4f8;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
 
-.purchase-history ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.purchase-history li {
-  color: #555;
-  padding: 0.25rem 0;
-  font-size: 0.9rem;
-}
-
-.purchase-history p {
-  color: #555;
-  font-size: 0.9rem;
+.content p {
+  color: #bbb;
+  font-size: 1.25rem;
 }
