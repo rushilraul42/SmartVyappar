@@ -11,6 +11,8 @@ import RegistrationPage from "./pages/RegistrationPage";
 import SellPage from "./pages/SellPage";
 import MyListingsPage from "./pages/MyListingsPage";
 import CartPage from "./pages/CartPage";
+import PremiumPage from "./pages/PremiumPage";
+import FakePaymentPage from "./pages/FakePaymentPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -25,29 +27,21 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route
-          path="/"
-          element={user ? <Navigate to="/home" /> : <LoginPage />}
-        />
-        <Route
-          path="/register"
-          element={user ? <Navigate to="/home" /> : <RegistrationPage />}
-        />
-        <Route
-          path="/home"
-          element={user ? <HomePage /> : <Navigate to="/" />}
-        />
-        <Route
-          path="/buy"
-          element={user ? <BuyPage /> : <Navigate to="/" />}
-        />
-        <Route
-          path="/rent"
-          element={user ? <RentPage /> : <Navigate to="/" />}
-        />
-        <Route path="/sell" element={<SellPage />} />
-        <Route path="/my-listings" element={<MyListingsPage />} />
-        <Route path="/cart" element={<CartPage />} />
+        {/* Redirect to /home if authenticated, else show LoginPage */}
+        <Route path="/" element={user ? <Navigate to="/home" /> : <LoginPage />} />
+        
+        {/* Only show RegistrationPage if user is not logged in */}
+        <Route path="/register" element={user ? <Navigate to="/home" /> : <RegistrationPage />} />
+
+        {/* Private Routes (Require Authentication) */}
+        <Route path="/home" element={user ? <HomePage /> : <Navigate to="/" />} />
+        <Route path="/buy" element={user ? <BuyPage /> : <Navigate to="/" />} />
+        <Route path="/rent" element={user ? <RentPage /> : <Navigate to="/" />} />
+        <Route path="/sell" element={user ? <SellPage /> : <Navigate to="/" />} />
+        <Route path="/my-listings" element={user ? <MyListingsPage /> : <Navigate to="/" />} />
+        <Route path="/cart" element={user ? <CartPage /> : <Navigate to="/" />} />
+        <Route path="/premium" element={user ? <PremiumPage /> : <Navigate to="/" />} />
+        <Route path="/fake-payment" element={user ? <FakePaymentPage /> : <Navigate to="/" />} />
       </Routes>
     </Router>
   );

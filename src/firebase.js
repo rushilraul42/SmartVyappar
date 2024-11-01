@@ -1,7 +1,6 @@
-// src/firebase.js
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
+import { getFirestore, doc, setDoc } from "firebase/firestore"; // Import Firestore methods
 
 // Your Firebase configuration
 const firebaseConfig = {
@@ -22,13 +21,32 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 // Register a new user
-export const registerUser = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password);
+export const registerUser = async (email, password) => {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+
+    // Create a user document in Firestore
+    const userRef = doc(db, "users", user.uid);
+    await setDoc(userRef, {
+        email: user.email,
+        premium: false, // Initialize premium status to false
+        // Add any other fields you want to initialize
+    });
 };
 
 // Sign in an existing user
 export const signInUser = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
+};
+
+// Sign out the current user
+export const signOutUser = () => {
+    return signOut(auth);
+};
+
+// Check if a user is currently logged in
+export const onAuthStateChangedListener = (callback) => {
+    return onAuthStateChanged(auth, callback);
 };
 
 // Export the auth and db instances for use in other parts of the app

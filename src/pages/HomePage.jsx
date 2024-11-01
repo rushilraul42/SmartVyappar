@@ -23,7 +23,9 @@ function HomePage() {
           <button onClick={() => navigate("/buy")}>Buy</button>
           <button onClick={() => navigate("/rent")}>Rent</button>
           <button onClick={() => navigate("/sell")}>Sell</button>
-          <button onClick={toggleAccountMenu} className="account-nav-button">Account</button>
+          <button onClick={toggleAccountMenu} className="account-nav-button">
+            Account
+          </button>
         </div>
       </nav>
       
@@ -40,12 +42,14 @@ function HomePage() {
           <button onClick={() => navigate("/cart")}>
             View Cart
           </button>
+          <button onClick={() => navigate("/premium")}>
+            Premium
+          </button> {/* New Premium button */}
         </div>
       )}
 
       <div className="content">
         <h1>Welcome to Smart Vyapaar</h1>
-        <p>Choose an option to proceed:</p>
       </div>
     </div>
   );
