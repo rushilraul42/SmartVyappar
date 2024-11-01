@@ -14,49 +14,57 @@ body {
   background: #333;
   color: #f0f4f8;
   padding-top: 4rem; /* Navbar space */
+  background-image: url("/images/Yourparagraphtext.png");
+background-size: cover;
 }
 
 .navbar {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #222;
+  background-color:transparent;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 10;
+  border-bottom: 1px solid #ff5622e1;
 }
 
 .navbar-brand {
   font-size: 1.5rem;
-  color: #f0f4f8;
-  font-weight: bold;
+  color:#ff5622e1;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  
 }
+
 
 .navbar-links {
   display: flex;
-  gap: 1.5rem;
+
+  gap: 2rem;
+  
 }
 
 .navbar-links button {
   font-size: 1rem;
-  color: #f0f4f8;
-  background-color: transparent;
-  border: none;
+  color: black;
+ 
+  background-color: #ff5622e1;
   cursor: pointer;
   padding: 0.5rem 1rem;
   transition: color 0.3s, border-bottom 0.3s;
-  border-bottom: 2px solid transparent;
+  
 }
 
-.navbar-links button:hover {
-  color: #00aaff;
-  border-bottom: 2px solid #00aaff;
+.navbar-links :hover {
+  
+  color: #F1C467;
 }
 
 .account-nav-button {
+  
   color: #ff5722;
 }
 
@@ -134,5 +142,3 @@ body {
   color: #bbb;
   font-size: 1.25rem;
 }
-
-

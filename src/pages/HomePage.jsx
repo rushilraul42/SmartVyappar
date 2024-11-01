@@ -18,14 +18,14 @@ function HomePage() {
   return (
     <div className="home-container">
       <nav className="navbar">
-        <h2 className="navbar-brand">Smart Vyapaar</h2>
+        <h2 className="navbar-brand">Smart <span>Vyapaar</span></h2>
         <div className="navbar-links">
           <button onClick={() => navigate("/buy")}>Buy</button>
           <button onClick={() => navigate("/rent")}>Rent</button>
           <button onClick={() => navigate("/sell")}>Sell</button>
-          <button onClick={toggleAccountMenu} className="account-nav-button">
-            Account
-          </button>
+          <div className="hello">
+          <button onClick={toggleAccountMenu} className="account-nav-button">Account</button>
+          </div>
         </div>
       </nav>
       
@@ -42,14 +42,12 @@ function HomePage() {
           <button onClick={() => navigate("/cart")}>
             View Cart
           </button>
-          <button onClick={() => navigate("/premium")}>
-            Premium
-          </button> {/* New Premium button */}
         </div>
       )}
 
       <div className="content">
-        <h1>Welcome to Smart Vyapaar</h1>
+        <h1></h1>
+        <p></p>
       </div>
     </div>
   );
