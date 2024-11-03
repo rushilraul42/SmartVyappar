@@ -3,16 +3,17 @@
 .premium-page {
   text-align: center;
   padding: 2rem;
-  color: #f0f4f8;
+  color: #e0e4e8;
+  background-color: #1a1a2e; /* Darker background for better contrast */
 }
 
 .comparison-table {
   margin: 2rem auto;
   max-width: 700px;
-  background-color: #333;
-  border-radius: 8px;
+  background-color: #2e2e3a;
+  border-radius: 12px;
   padding: 1.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   display: table;
   width: 100%;
 }
@@ -25,49 +26,55 @@
   display: table-cell;
   padding: 1rem;
   text-align: center;
-  border-bottom: 1px solid #666;
-  color: #f0f4f8;
+  border-bottom: 1px solid #555;
+  color: #e0e4e8;
 }
 
 .comparison-header .comparison-cell {
   font-weight: bold;
-  color: #ff9800;
-  border-bottom: 2px solid #ff9800;
+  color: #ffd700; /* Gold color for headers */
+  border-bottom: 2px solid #ffd700;
+  font-size: 1.2rem;
 }
 
 .normal-account {
-  color: #ff6b6b;
+  color: #ff5e5e;
+  font-weight: 600;
 }
 
 .premium-account {
-  color: #4CAF50; /* Brighter green for premium features */
+  color: #4CAF50; /* Bright green for premium features */
   font-weight: bold;
 }
 
 .get-premium-button {
   margin-top: 2rem;
-  padding: 0.75rem 2rem;
-  font-size: 1.1rem;
+  padding: 0.8rem 2.5rem;
+  font-size: 1.2rem;
   color: #fff;
   background-color: #ff9800;
   border: none;
-  border-radius: 8px;
+  border-radius: 24px; /* More rounded button */
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 4px 8px rgba(255, 152, 0, 0.4);
 }
 
 .get-premium-button:hover {
   background-color: #e68a00;
+  transform: scale(1.05); /* Slightly larger on hover */
+  box-shadow: 0 6px 12px rgba(230, 138, 0, 0.4);
 }
 
 .premium-activated {
   margin: 2rem auto;
   max-width: 600px;
-  background-color: #222;
+  background-color: #2b2b35;
   padding: 2rem;
-  border-radius: 8px;
-  color: #ff9800;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  color: #ffd700; /* Gold color for activated premium message */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  text-align: left;
 }
 
 .premium-activated h3 {
@@ -81,4 +88,18 @@
 
 .premium-activated li {
   padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.premium-activated li::before {
+  content: "✔️"; /* Check mark before each feature */
+  color: #4CAF50;
+  margin-right: 8px;
+}
+
+/* Adding a hover effect on the comparison rows for better interactivity */
+.comparison-row:hover .comparison-cell {
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s ease;
 }
