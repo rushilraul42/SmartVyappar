@@ -60,8 +60,7 @@ function HomePage() {
       )}
 
       <div className="content">
-        <h1>Welcome to Smart Vyapaar</h1>
-        <p>Your one-stop shop for buying, selling, and renting goods.</p>
+       
         
         <h2>Recommended for You</h2>
         <div className="recommended-products">
