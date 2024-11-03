@@ -73,7 +73,7 @@ function HomePage() {
               </div>
             ))
           ) : (
-            <p>No recommended products available.</p>
+            <p></p>
           )}
         </div>
       </div>
