@@ -1,7 +1,7 @@
 // src/pages/SellPage.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { db, auth } from "../firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, doc, getDoc } from "firebase/firestore";
 import "../styles/SellPage.css";
 
 function SellPage() {
@@ -9,6 +9,22 @@ function SellPage() {
   const [isRent, setIsRent] = useState(false);
   const [price, setPrice] = useState("");
   const [error, setError] = useState("");
+  const [isPremium, setIsPremium] = useState(false);
+
+  // Check if the user is premium when the component loads
+  useEffect(() => {
+    const checkPremiumStatus = async () => {
+      if (auth.currentUser) {
+        const userId = auth.currentUser.uid;
+        const userRef = doc(db, "users", userId);
+        const userDoc = await getDoc(userRef);
+        if (userDoc.exists() && userDoc.data().premium) {
+          setIsPremium(true);
+        }
+      }
+    };
+    checkPremiumStatus();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,6 +43,7 @@ function SellPage() {
         price: isRent ? `${price} per week` : price,
         timestamp: new Date(),
         userId, // Add userId field
+        featured: isPremium, // Mark as featured if user is premium
       };
 
       const productsRef = collection(db, "products");

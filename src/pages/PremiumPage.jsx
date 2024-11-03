@@ -1,3 +1,4 @@
+// src/pages/PremiumPage.jsx
 import React, { useEffect, useState } from "react";
 import { auth, db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
@@ -14,7 +15,6 @@ function PremiumPage() {
         const userRef = doc(db, "users", auth.currentUser.uid);
         const userDoc = await getDoc(userRef);
         if (userDoc.exists()) {
-          console.log("Fetched user data:", userDoc.data()); // Log fetched data for debugging
           if (userDoc.data().premium) {
             setIsPremium(true);
           }
@@ -29,15 +29,14 @@ function PremiumPage() {
   }, []);
 
   const handleGetPremiumClick = () => {
-    navigate("/fake-payment"); // Redirect to Fake Payment Page
+    navigate("/fake-payment");
   };
 
   return (
     <div className="premium-page">
-      <h2>Upgrade to Premium</h2>
+      <h2>{isPremium ? "Premium Account Activated!" : "Upgrade to Premium"}</h2>
       {isPremium ? (
         <div className="premium-activated">
-          <h3>Premium Account Activated!</h3>
           <p>Enjoy your premium features:</p>
           <ul>
             <li>Featured on Home Page</li>

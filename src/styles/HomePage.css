@@ -142,3 +142,17 @@ background-size: cover;
   color: #bbb;
   font-size: 1.25rem;
 }
+
+.recommended-listings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.listing-card {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  width: calc(33% - 1rem);
+}

@@ -13,6 +13,7 @@ import MyListingsPage from "./pages/MyListingsPage";
 import CartPage from "./pages/CartPage";
 import PremiumPage from "./pages/PremiumPage";
 import FakePaymentPage from "./pages/FakePaymentPage";
+import PremiumActivatedPage from "./pages/PremiumActivatedPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -42,6 +43,9 @@ function App() {
         <Route path="/cart" element={user ? <CartPage /> : <Navigate to="/" />} />
         <Route path="/premium" element={user ? <PremiumPage /> : <Navigate to="/" />} />
         <Route path="/fake-payment" element={user ? <FakePaymentPage /> : <Navigate to="/" />} />
+        
+        {/* Premium Activated Page should be private as well */}
+        <Route path="/premium-activated" element={user ? <PremiumActivatedPage /> : <Navigate to="/" />} />
       </Routes>
     </Router>
   );

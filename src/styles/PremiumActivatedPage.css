@@ -1,0 +1,24 @@
+/* src/styles/PremiumActivatedPage.css */
+.premium-activated-page {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .premium-activated-page h2 {
+    color: #2ecc71;
+  }
+  
+  .premium-activated-page h3 {
+    margin-top: 10px;
+  }
+  
+  .premium-activated-page ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .premium-activated-page ul li {
+    margin: 10px 0;
+    font-weight: bold;
+  }
+  

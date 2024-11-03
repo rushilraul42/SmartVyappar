@@ -1,7 +1,8 @@
 // src/pages/LoginPage.jsx
 import React, { useState } from "react";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase"; // Import Firestore (db) and auth
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { doc, setDoc, getDoc } from "firebase/firestore"; // Import Firestore functions
 import { useNavigate } from "react-router-dom";
 import "../styles/LoginPage.css";
 
@@ -25,7 +26,22 @@ function LoginPage() {
 
   const handleGoogleLogin = async () => {
     try {
-      await signInWithPopup(auth, provider);
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+      // Check if the user's document exists in Firestore
+      const userDocRef = doc(db, "users", user.uid);
+      const userDocSnap = await getDoc(userDocRef);
+
+      // If the document doesn't exist, create it with default fields
+      if (!userDocSnap.exists()) {
+        await setDoc(userDocRef, {
+          email: user.email,
+          cart: [],
+          purchaseHistory: []
+        });
+      }
+
       navigate("/home");
     } catch (error) {
       console.error("Google Sign-In Error: ", error.message);

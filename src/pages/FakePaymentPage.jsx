@@ -1,3 +1,4 @@
+// src/pages/FakePaymentPage.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "../firebase";
@@ -28,29 +29,17 @@ function FakePaymentPage() {
     ) {
       alert("Payment successful! Premium account activated.");
 
-      // Check if user is logged in and get uid
       if (auth.currentUser) {
         const userId = auth.currentUser.uid;
-        console.log("Current User ID:", userId); // Log the user ID
-
-        // Check if the user document exists before trying to update it
         const userRef = doc(db, "users", userId);
         const userDoc = await getDoc(userRef);
         
         if (userDoc.exists()) {
-          console.log("User document exists:", userDoc.data()); // Log the existing user document data
-
-          // Update user's premium status in Firestore
           await updateDoc(userRef, { premium: true });
-          console.log("Premium status updated successfully.");
-        } else {
-          console.error("No user document found for UID:", userId); // Log if document does not exist
         }
-      } else {
-        console.error("No user is currently logged in.");
       }
 
-      navigate("/premium"); // Redirect to Premium page after successful payment
+      navigate("/premium-activated");
     } else {
       alert("Please enter valid payment details.");
     }
