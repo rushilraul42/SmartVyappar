@@ -62,7 +62,7 @@ function HomePage() {
       <div className="content">
        
         
-        <h2>Recommended for You</h2>
+        
         <div className="recommended-products">
           {recommendedProducts.length > 0 ? (
             recommendedProducts.map(product => (
