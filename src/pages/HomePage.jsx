@@ -52,6 +52,7 @@ function HomePage() {
           <button onClick={() => navigate("/buy")}>Buy</button>
           <button onClick={() => navigate("/rent")}>Rent</button>
           <button onClick={() => navigate("/sell")}>Sell</button>
+          <button onClick={() => navigate("/community")}>Community</button>
           <div className="hello">
             <button onClick={toggleAccountMenu} className="account-nav-button">Account</button>
           </div>

@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore"; // Import Firestore methods
+import { collection } from "firebase/firestore";
 
 // Your Firebase configuration
 const firebaseConfig = {
@@ -48,6 +49,8 @@ export const signOutUser = () => {
 export const onAuthStateChangedListener = (callback) => {
     return onAuthStateChanged(auth, callback);
 };
+
+export const communityPostsCollection = collection(db, "communityPosts");
 
 // Export the auth and db instances for use in other parts of the app
 export { auth, db };

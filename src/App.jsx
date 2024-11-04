@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import CommunityPage from "./pages/CommunityPage"; // Import at the top
 import HomePage from "./pages/HomePage";
 import BuyPage from "./pages/BuyPage";
 import RentPage from "./pages/RentPage";
@@ -45,6 +46,7 @@ function App() {
         <Route path="/fake-payment" element={user ? <FakePaymentPage /> : <Navigate to="/" />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/home" element={<HomePage />} />
+        <Route path="/community" element={user ? <CommunityPage /> : <Navigate to="/" />} />
         {/* Premium Activated Page should be private as well */}
         <Route path="/premium-activated" element={user ? <PremiumActivatedPage /> : <Navigate to="/" />} />
       </Routes>
