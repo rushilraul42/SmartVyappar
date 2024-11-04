@@ -1,22 +1,32 @@
+// src/pages/CartPage.jsx
 import React, { useState, useEffect } from "react";
-import "../styles/CartPage.css"; // Correct import path
+import "../styles/CartPage.css";
 
 function CartPage() {
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
-    // Load cart items from local storage
     const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
     setCartItems(storedCart);
   }, []);
 
-  const handlePurchase = () => {
-    // Placeholder for purchase functionality
-    alert("Proceeding to purchase!");
+  const handlePurchaseItem = (index) => {
+    const item = cartItems[index];
+    alert(`Item ${item.name} bought successfully!`);
 
-    // Clear cart items from local storage
-    localStorage.removeItem("cart");
-    setCartItems([]); // Clear state
+    const updatedCart = cartItems.filter((_, i) => i !== index);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    setCartItems(updatedCart);
+  };
+
+  const handleBuyCart = () => {
+    if (cartItems.length > 0) {
+      alert("All items in the cart bought successfully!");
+      localStorage.removeItem("cart");
+      setCartItems([]);
+    } else {
+      alert("Your cart is empty.");
+    }
   };
 
   const handleDeleteItem = (index) => {
@@ -37,6 +47,11 @@ function CartPage() {
                 <span className="cart-item-category">{item.category}</span>
                 <span className="cart-item-price">₹{item.price}</span>
                 <button 
+                  className="purchase-item-button" 
+                  onClick={() => handlePurchaseItem(index)}>
+                  Purchase
+                </button>
+                <button 
                   className="delete-button" 
                   onClick={() => handleDeleteItem(index)}>
                   Delete
@@ -44,8 +59,8 @@ function CartPage() {
               </li>
             ))}
           </ul>
-          <button className="purchase-button" onClick={handlePurchase}>
-            Purchase
+          <button className="buy-cart-button" onClick={handleBuyCart}>
+            Buy Cart
           </button>
         </div>
       ) : (

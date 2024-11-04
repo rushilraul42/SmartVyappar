@@ -17,20 +17,26 @@ function HomePage() {
     navigate("/login");
   };
 
-  // Fetch recommended (featured) products
-  useEffect(() => {
-    const fetchRecommendedProducts = async () => {
-      try {
-        const productsRef = collection(db, "products");
-        const featuredQuery = query(productsRef, where("featured", "==", true));
-        const querySnapshot = await getDocs(featuredQuery);
-        const products = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        setRecommendedProducts(products);
-      } catch (error) {
-        console.error("Error fetching recommended products:", error);
-      }
-    };
+  const fetchRecommendedProducts = async () => {
+    try {
+      const productsRef = collection(db, "products");
+      const featuredQuery = query(productsRef, where("featured", "==", true));
+      const querySnapshot = await getDocs(featuredQuery);
+      const products = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setRecommendedProducts(products);
+    } catch (error) {
+      console.error("Error fetching recommended products:", error);
+    }
+  };
 
+  const handleAddToCart = (product) => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push(product);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(`${product.name} added to cart!`);
+  };
+
+  useEffect(() => {
     fetchRecommendedProducts();
   }, []);
 
@@ -60,20 +66,18 @@ function HomePage() {
       )}
 
       <div className="content">
-       
-        
-        
         <div className="recommended-products">
           {recommendedProducts.length > 0 ? (
             recommendedProducts.map(product => (
               <div key={product.id} className="product-card">
                 <h3>{product.name}</h3>
                 <p>Category: {product.category}</p>
-                <p>Price: {product.price}</p>
+                <p>Price: ₹{product.price}</p>
+                <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
               </div>
             ))
           ) : (
-            <p></p>
+            <p>No recommended products at the moment.</p>
           )}
         </div>
       </div>
