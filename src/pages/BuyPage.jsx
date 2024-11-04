@@ -9,7 +9,7 @@ function BuyPage() {
   const [products, setProducts] = useState([]);
   const [reviews, setReviews] = useState({});
   const [email, setEmail] = useState(""); // Email state
-  const [reviewText, setReviewText] = useState("");
+  const [reviewTexts, setReviewTexts] = useState({}); // Store review texts for each product
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -65,6 +65,8 @@ function BuyPage() {
   };
 
   const handleReviewSubmit = async (productId) => {
+    const reviewText = reviewTexts[productId] || ""; // Get the review text for the specific product
+
     if (!email || !reviewText) {
       alert("Please enter your email and review text.");
       return;
@@ -79,8 +81,9 @@ function BuyPage() {
       };
 
       await addDoc(collection(db, "reviews"), reviewData);
-      setReviewText(""); // Clear review input
+      setReviewTexts((prev) => ({ ...prev, [productId]: "" })); // Clear review input for that product
       alert("Review submitted!");
+
       // Refresh reviews
       const updatedReviews = { ...reviews };
       if (!updatedReviews[productId]) {
@@ -94,12 +97,16 @@ function BuyPage() {
     }
   };
 
+  const handleReviewChange = (productId, value) => {
+    setReviewTexts((prev) => ({ ...prev, [productId]: value })); // Update review text for the specific product
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div>
+    <div className="buy-page">
       <h2>Buy Products</h2>
       <div className="product-list">
         {products.map((product) => (
@@ -113,7 +120,7 @@ function BuyPage() {
               onActionClick={() => handleAddToCart(product)}
             />
             <h3>Reviews</h3>
-            <div>
+            <div className="reviews-container">
               {reviews[product.id]?.map((review, index) => (
                 <div key={index} className="review">
                   <strong>{review.email}:</strong> {review.text}
@@ -128,9 +135,9 @@ function BuyPage() {
                 readOnly // Make email input read-only
               />
               <textarea
-                value={reviewText}
+                value={reviewTexts[product.id] || ""} // Use specific product review text
                 placeholder="Your review"
-                onChange={(e) => setReviewText(e.target.value)}
+                onChange={(e) => handleReviewChange(product.id, e.target.value)} // Handle change for specific product
                 required
               />
               <button onClick={() => handleReviewSubmit(product.id)}>Submit Review</button>

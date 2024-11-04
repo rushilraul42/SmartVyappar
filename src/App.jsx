@@ -43,7 +43,8 @@ function App() {
         <Route path="/cart" element={user ? <CartPage /> : <Navigate to="/" />} />
         <Route path="/premium" element={user ? <PremiumPage /> : <Navigate to="/" />} />
         <Route path="/fake-payment" element={user ? <FakePaymentPage /> : <Navigate to="/" />} />
-        
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/home" element={<HomePage />} />
         {/* Premium Activated Page should be private as well */}
         <Route path="/premium-activated" element={user ? <PremiumActivatedPage /> : <Navigate to="/" />} />
       </Routes>

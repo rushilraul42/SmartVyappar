@@ -1,3 +1,4 @@
+// src/pages/HomePage.jsx
 import React, { useState, useEffect } from "react";
 import { auth, db } from "../firebase";
 import { collection, query, where, getDocs } from "firebase/firestore";
@@ -11,9 +12,13 @@ function HomePage() {
 
   const toggleAccountMenu = () => setShowAccountMenu(!showAccountMenu);
 
-  const handleLogout = () => {
-    auth.signOut();
-    navigate("/login");
+  const handleLogout = async () => {
+    try {
+      await auth.signOut(); // Ensure the sign out is awaited
+      navigate("/login"); // Redirect to login after sign out
+    } catch (error) {
+      console.error("Error signing out: ", error);
+    }
   };
 
   const fetchRecommendedProducts = async () => {
