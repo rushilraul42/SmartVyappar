@@ -1,8 +1,8 @@
 // src/pages/RentPage.jsx
 import React, { useState, useEffect } from "react";
 import ItemCard from "../components/ItemCard";
-import { db } from "../firebase"; // Ensure db is imported
-import { collection, getDocs } from "firebase/firestore"; // Removed addDoc since we are using localStorage
+import { db } from "../firebase";
+import { collection, getDocs } from "firebase/firestore";
 import "../styles/RentPage.css";
 
 function RentPage() {
@@ -14,7 +14,7 @@ function RentPage() {
       const querySnapshot = await getDocs(productsRef);
       const rentItemsList = querySnapshot.docs
         .map(doc => ({ id: doc.id, ...doc.data() }))
-        .filter(product => product.category === "rent"); // Only fetch "rent" items
+        .filter(product => product.category === "rent");
       setProducts(rentItemsList);
     };
 
@@ -23,8 +23,8 @@ function RentPage() {
 
   const handleAddToCart = (product) => {
     const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
-    existingCart.push(product); // Add the selected product to the cart
-    localStorage.setItem("cart", JSON.stringify(existingCart)); // Update local storage
+    existingCart.push(product);
+    localStorage.setItem("cart", JSON.stringify(existingCart));
     alert(`Added ${product.name} to cart!`);
   };
 
@@ -37,8 +37,9 @@ function RentPage() {
             key={product.id}
             title={product.name}
             description={`${product.category} - ₹${product.price}`}
+            fullDescription={product.description || "No description available"} // Pass full description here
             actionLabel="Add to Cart"
-            onActionClick={() => handleAddToCart(product)} // Call handleAddToCart on action click
+            onActionClick={() => handleAddToCart(product)}
           />
         ))}
       </div>

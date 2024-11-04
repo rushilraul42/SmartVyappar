@@ -1,7 +1,7 @@
 // src/pages/BuyPage.jsx
 import React, { useState, useEffect } from "react";
 import ItemCard from "../components/ItemCard";
-import { db } from "../firebase"; // Importing db to fetch products from Firestore
+import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
 
 function BuyPage() {
@@ -41,6 +41,7 @@ function BuyPage() {
             key={product.id}
             title={product.name}
             description={`${product.category} - ₹${product.price}`}
+            fullDescription={product.description || "No description available"} // Pass full description here
             actionLabel="Add to Cart"
             onActionClick={() => handleAddToCart(product)}
           />
