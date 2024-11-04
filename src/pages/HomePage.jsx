@@ -1,4 +1,3 @@
-// src/pages/HomePage.jsx
 import React, { useState, useEffect } from "react";
 import { auth, db } from "../firebase";
 import { collection, query, where, getDocs } from "firebase/firestore";
@@ -66,6 +65,7 @@ function HomePage() {
       )}
 
       <div className="content">
+        <h1>Recommended Products</h1>
         <div className="recommended-products">
           {recommendedProducts.length > 0 ? (
             recommendedProducts.map(product => (

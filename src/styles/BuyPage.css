@@ -1,40 +1,59 @@
 /* src/styles/BuyPage.css */
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #333; /* Dark background */
+}
+
 .product-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-    padding: 2rem;
-  }
-  
-  .product-card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 1rem;
-    width: 200px;
-    text-align: center;
-  }
-  
-  .product-card h3 {
-    font-size: 1.2rem;
-    color: #333;
-  }
-  
-  .product-card p {
-    color: #666;
-    margin: 0.5rem 0;
-  }
-  
-  .product-card button {
-    padding: 0.5rem 1rem;
-    color: #fff;
-    background-color: #28a745;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .product-card button:hover {
-    background-color: #218838;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.product-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #444; /* Background for product items */
+  margin-bottom: 20px;
+  width: 300px; /* Fixed width for consistency */
+  color: #f0f4f8; /* Text color for product item */
+}
+
+.review {
+  background-color: #555; /* Background for reviews */
+  color: #fff; /* Text color for reviews */
+  padding: 5px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+.review-input {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.review-input input,
+.review-input textarea {
+  padding: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc; /* Border for input fields */
+  border-radius: 5px; /* Rounded corners for input fields */
+}
+
+.review-input button {
+  background-color: #ff5622e1; /* Button color */
+  color: white; /* Text color */
+  border: none; /* Remove border */
+  padding: 10px; /* Padding for button */
+  border-radius: 5px; /* Rounded corners for button */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.review-input button:hover {
+  background-color: #dc3545; /* Darker color on hover */
+}

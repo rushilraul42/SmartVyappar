@@ -1,7 +1,8 @@
+// src/components/ItemCard.jsx
 import React, { useState } from "react";
 import "../styles/ItemCard.css";
 
-function ItemCard({ title, description, fullDescription, onActionClick, actionLabel }) {
+function ItemCard({ title, description, fullDescription, imageUrl, onActionClick, actionLabel }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpand = () => {
@@ -10,6 +11,7 @@ function ItemCard({ title, description, fullDescription, onActionClick, actionLa
 
   return (
     <div className="item-card">
+      {imageUrl && <img src={imageUrl} alt={title} className="item-card-image" />} {/* Display product image */}
       <h3>{title}</h3>
       <p>{description}</p>
       

@@ -15,14 +15,14 @@ body {
   color: #f0f4f8;
   padding-top: 4rem; /* Navbar space */
   background-image: url("/images/Yourparagraphtext.png");
-background-size: cover;
+  background-size: cover;
 }
 
 .navbar {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color:transparent;
+  background-color: rgba(51, 51, 51, 0.9); /* Slightly transparent for effect */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -34,37 +34,29 @@ background-size: cover;
 
 .navbar-brand {
   font-size: 1.5rem;
-  color:#ff5622e1;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  
+  color: #ff5622e1;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
-
 
 .navbar-links {
   display: flex;
-
   gap: 2rem;
-  
 }
 
 .navbar-links button {
   font-size: 1rem;
   color: black;
- 
   background-color: #ff5622e1;
   cursor: pointer;
   padding: 0.5rem 1rem;
   transition: color 0.3s, border-bottom 0.3s;
-  
 }
 
 .navbar-links :hover {
-  
   color: #F1C467;
 }
 
 .account-nav-button {
-  
   color: #ff5722;
 }
 
@@ -127,32 +119,47 @@ background-size: cover;
 }
 
 .content {
-  margin-top: 2rem;
+  margin-top: 6rem; /* Increased margin to account for fixed navbar */
   text-align: center;
 }
 
-.content h1 {
-  color: #f0f4f8;
-  font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
+.recommended-products {
+  display: flex; /* Use flexbox for horizontal and vertical layout */
+  flex-wrap: wrap; /* Allow items to wrap onto the next line */
+  justify-content: center; /* Center items horizontally */
+  gap: 1rem; /* Space between items */
+  margin-top: 1rem; /* Space above the products */
 }
 
-.content p {
-  color: #bbb;
-  font-size: 1.25rem;
-}
-
-.recommended-listings {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.listing-card {
+.product-card {
   border: 1px solid #ddd;
   padding: 1rem;
   border-radius: 8px;
-  background-color: #f9f9f9;
-  width: calc(33% - 1rem);
+  background-color: #444; /* Updated for visibility on dark background */
+  color: #f0f4f8; /* Text color for product card */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: add shadow for better separation */
+  transition: transform 0.2s; /* Animation on hover */
+  flex: 0 1 250px; /* Flex item: grow, shrink, basis */
+}
+
+.product-card:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.review-input {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.review-input input {
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.review-display {
+  margin-top: 10px;
+  background: #444;
+  padding: 10px;
+  border-radius: 5px;
 }

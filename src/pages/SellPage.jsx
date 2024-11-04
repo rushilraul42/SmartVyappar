@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { db, auth } from "../firebase";
 import { collection, addDoc, doc, getDoc } from "firebase/firestore";
+import { uploadImageToCloudinary } from "../utils/cloudinary"; // Adjust the path as necessary
 import "../styles/SellPage.css";
 
 function SellPage() {
   const [productName, setProductName] = useState("");
-  const [description, setDescription] = useState(""); // New state for description
+  const [description, setDescription] = useState("");
   const [isRent, setIsRent] = useState(false);
   const [price, setPrice] = useState("");
   const [error, setError] = useState("");
   const [isPremium, setIsPremium] = useState(false);
+  const [imageUrl, setImageUrl] = useState("");
 
   useEffect(() => {
     const checkPremiumStatus = async () => {
@@ -25,6 +27,16 @@ function SellPage() {
     checkPremiumStatus();
   }, []);
 
+  const handleImageUpload = async (file) => {
+    try {
+      const url = await uploadImageToCloudinary(file); // Use the upload function here
+      setImageUrl(url); // Save the URL from Cloudinary response
+    } catch (error) {
+      console.error("Image upload failed:", error);
+      setError("Image upload failed. Please try again.");
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -37,12 +49,13 @@ function SellPage() {
       const userId = auth.currentUser.uid;
       const productData = {
         name: productName,
-        description, // Add description to the product data
+        description,
         category: isRent ? "rent" : "buy",
         price: isRent ? `${price} per week` : price,
         timestamp: new Date(),
         userId,
         featured: isPremium,
+        imageUrl, // Include imageUrl in the product data
       };
 
       const productsRef = collection(db, "products");
@@ -50,9 +63,10 @@ function SellPage() {
 
       alert("Product listed successfully!");
       setProductName("");
-      setDescription(""); // Reset description field
+      setDescription("");
       setIsRent(false);
       setPrice("");
+      setImageUrl(""); // Reset image URL
       setError("");
     } catch (error) {
       console.error("Error adding product: ", error);
@@ -75,7 +89,7 @@ function SellPage() {
           />
         </div>
         <div>
-          <label>About Product:</label> {/* New description field */}
+          <label>About Product:</label>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -115,6 +129,14 @@ function SellPage() {
             />
             {isRent ? " per week" : ""}
           </label>
+        </div>
+        <div>
+          <label>Product Image:</label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => handleImageUpload(e.target.files[0])}
+          />
         </div>
         <button type="submit">List Product</button>
       </form>
